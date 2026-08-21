@@ -39,13 +39,13 @@ transactions per byte.
 innermost contiguous run `r`, where a line holds `L` elements. A run shorter
 than a line still pays for a whole line, which is why the divisor is `min r L`.
 
-| theorem | statement |
-|---|---|
-| `contiguous_is_optimal` | no run length beats a full line |
-| `strided_penalty` | a strided copy costs exactly `L` times its contiguous equivalent |
-| `two_contiguous_beat_one_strided` | 2 contiguous copies < 1 strided copy, whenever `L > 2` |
-| `copy_count_is_not_a_cost_model` | ∃ a configuration with **fewer copies and greater cost** |
-| `break_even` | replacing `c₁` contiguous copies with `c₂` strided ones wins only if `c₂ * L < c₁` |
+| theorem                           | statement                                                                          |
+| --------------------------------- | ---------------------------------------------------------------------------------- |
+| `contiguous_is_optimal`           | no run length beats a full line                                                    |
+| `strided_penalty`                 | a strided copy costs exactly `L` times its contiguous equivalent                   |
+| `two_contiguous_beat_one_strided` | 2 contiguous copies < 1 strided copy, whenever `L > 2`                             |
+| `copy_count_is_not_a_cost_model`  | ∃ a configuration with **fewer copies and greater cost**                           |
+| `break_even`                      | replacing `c₁` contiguous copies with `c₂` strided ones wins only if `c₂ * L < c₁` |
 
 ## The rule that follows
 
@@ -53,8 +53,8 @@ With a 64-byte line and f32 data, `L = 16`. `break_even` then says you must
 delete **at least 16 contiguous copies** to afford a single strided one. Trading
 locality for copy count essentially never pays.
 
-So an argument of the form *"this graph has too many copies, therefore removing
-one makes it faster"* is unsound on its own. It needs a locality argument: what
+So an argument of the form _"this graph has too many copies, therefore removing
+one makes it faster"_ is unsound on its own. It needs a locality argument: what
 happens to the innermost contiguous run of every copy that remains.
 
 ## Scope, honestly
